@@ -7,6 +7,10 @@ function! trello#util#get(path, params)
   return s:HTTP.get(g:trello.api.base_url . a:path, a:params)
 endfunction
 
+function! trello#util#get_content(path, params)
+  return s:JSON.decode(trello#util#get(a:path, a:params).content)
+endfunction
+
 function! trello#util#params_to_query(params)
   return s:HTTP.encodeURI(a:params)
 endfunction
